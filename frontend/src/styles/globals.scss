@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #0f1115;
+  color: #e6ebf5;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --color-bg: #0f1115;
+  --color-surface: #151923;
+  --color-text: #e6ebf5;
+  --color-muted: #97a0af;
+
+  --color-primary: #7aa2ff;
+  --color-pending: #ffb84d;
+  --color-progress: #66d9e8;
+  --color-done: #63e6be;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
