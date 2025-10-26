@@ -1,0 +1,25 @@
+.title {
+  margin: 0;
+  line-height: 1.2;
+  color: var(--color-text);
+
+  &--regular {
+    font-weight: 500;
+  }
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--sm {
+    font-size: clamp(18px, 2.5vw, 20px);
+  }
+  &--md {
+    font-size: clamp(22px, 3vw, 24px);
+  }
+  &--lg {
+    font-size: clamp(26px, 3.5vw, 28px);
+  }
+  &--xl {
+    font-size: clamp(32px, 4vw, 36px);
+  }
+}

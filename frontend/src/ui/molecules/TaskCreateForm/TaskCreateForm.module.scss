@@ -1,0 +1,28 @@
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid #222838;
+  border-radius: 12px;
+
+  &__header {
+    margin-bottom: 4px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 6px;
+  }
+}
+
+@media (min-width: 768px) {
+  .task-form {
+    padding: 20px;
+    gap: 16px;
+  }
+}
