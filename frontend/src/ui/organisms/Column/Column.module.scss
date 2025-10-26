@@ -1,0 +1,79 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--color-bg);
+}
+
+.column__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #262b39;
+}
+
+.column--pending .column__header {
+  border-bottom-color: var(--color-pending);
+}
+.column--progress .column__header {
+  border-bottom-color: var(--color-progress);
+}
+.column--done .column__header {
+  border-bottom-color: var(--color-done);
+}
+
+.column__count {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #1a2030;
+  color: var(--color-muted);
+}
+
+.column__stack {
+  display: grid;
+  gap: 10px;
+  padding: 8px;
+
+  min-height: 120px;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.column__empty {
+  min-height: 80px;
+  display: grid;
+  place-items: center;
+  opacity: 0.6;
+  font-size: 14px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.column__card {
+  background: var(--color-surface);
+  border: 1px solid #222838;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: grab;
+}
+.column__card:active {
+  cursor: grabbing;
+}
+
+.column__cardTitle {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.column__cardDesc {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.column__form {
+  margin-top: 4px;
+}
