@@ -26,7 +26,7 @@ const KanbanBoard: React.FC = () => {
 
   return (
     <main className="container">
-      <h1 style={{ marginBottom: 16 }}>Kanban — Context + Reducer + DnD</h1>
+      <h1 style={{ marginBottom: 16 }}>Kanban</h1>
 
       <BoardLayout>
         <Column
