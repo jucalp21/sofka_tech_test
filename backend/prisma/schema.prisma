@@ -3,7 +3,6 @@ generator client {
   binaryTargets = ["native", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
 }
 
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -16,10 +15,10 @@ enum TaskStatus {
 }
 
 model Task {
-  id          String      @id @default(uuid())
+  id          String     @id @default(uuid())
   title       String
   description String?
-  status      TaskStatus  @default(pending)
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  status      TaskStatus @default(pending)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
