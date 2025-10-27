@@ -1,4 +1,41 @@
 services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-kanban}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kanban}
+      POSTGRES_DB: ${POSTGRES_DB:-kanban}
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kanban-backend
+    working_dir: /app
+    command: npm run start:dev
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgres://kanban:kanban@db:5432/kanban?schema=public
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+
   frontend:
     build:
       context: ./frontend
@@ -10,3 +47,11 @@ services:
       - /app/node_modules
     working_dir: /app
     command: npm run dev -- --host
+    environment:
+      VITE_API_BASE_URL: http://backend:3000/api
+    depends_on:
+      backend:
+        condition: service_started
+
+volumes:
+  dbdata:
